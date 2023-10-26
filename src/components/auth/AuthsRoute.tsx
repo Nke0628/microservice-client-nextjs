@@ -6,7 +6,7 @@ type Props = {
   children: ReactNode;
 };
 
-const Auth: React.FC<Props> = ({ children }) => {
+const AuthRoute: React.FC<Props> = ({ children }) => {
   const { isAuthenticated } = useAuth();
 
   // privatePageに認証時以外にアクセスした場合はログイン画面に遷移させる
@@ -18,4 +18,4 @@ const Auth: React.FC<Props> = ({ children }) => {
   return children;
 };
 
-export default Auth;
+export default AuthRoute;

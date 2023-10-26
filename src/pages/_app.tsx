@@ -3,6 +3,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import type { AppProps } from "next/app";
 import { Provider } from "urql";
 import { urqlClient } from "@/libs/urql-clietn";
+import AuthRoute from "@/components/auth/AuthsRoute";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -10,7 +11,9 @@ export default function App({ Component, pageProps }: AppProps) {
       <Provider value={urqlClient}>
         <ChakraProvider>
           <AuthProvider>
-            <Component {...pageProps} />
+            <AuthRoute>
+              <Component {...pageProps} />
+            </AuthRoute>
           </AuthProvider>
         </ChakraProvider>
       </Provider>
