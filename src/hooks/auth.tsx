@@ -1,4 +1,5 @@
-import React, { FC, ReactNode, useContext } from "react";
+import storage from "@/utils/storage";
+import React, { FC, ReactNode, useContext, useEffect } from "react";
 
 type AuthInfo = {
   isAuthenticated: boolean;
@@ -34,6 +35,10 @@ export const AuthProvider: FC<Props> = ({ children }) => {
       name: "Jhon",
     },
   };
+
+  useEffect(() => {
+    storage.setToken("sample");
+  });
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
