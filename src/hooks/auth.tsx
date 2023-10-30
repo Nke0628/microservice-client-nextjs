@@ -1,8 +1,9 @@
 import storage from "@/utils/storage";
-import React, { FC, ReactNode, useContext, useEffect } from "react";
+import React, { FC, ReactNode, useContext, useEffect, useState } from "react";
 
 type AuthInfo = {
   isAuthenticated: boolean;
+  updateIsAuthenticated: (isAuthenticated: boolean) => void;
   user: {
     name: string;
   };
@@ -14,6 +15,7 @@ type Props = {
 
 const AuthContext = React.createContext<AuthInfo>({
   isAuthenticated: false,
+  updateIsAuthenticated: () => {},
   user: {
     name: "",
   },
@@ -24,21 +26,19 @@ export const useAuth = () => {
 };
 
 export const AuthProvider: FC<Props> = ({ children }) => {
-  // 認証ロジックを記載する
-  const isAuthenticated = () => {
-    return false;
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(true);
+
+  const updateIsAuthenticated = (isAuthenticated: boolean) => {
+    setIsAuthenticated(isAuthenticated);
   };
 
   const value: AuthInfo = {
-    isAuthenticated: isAuthenticated(),
+    isAuthenticated: isAuthenticated,
+    updateIsAuthenticated,
     user: {
       name: "Jhon",
     },
   };
-
-  useEffect(() => {
-    storage.setToken("sample");
-  });
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
