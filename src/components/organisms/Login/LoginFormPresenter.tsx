@@ -1,5 +1,5 @@
-import { UseFormReturn, useFormContext } from "react-hook-form";
-import { LoginFormType } from "./LoginForm";
+import { useFormContext } from "react-hook-form";
+
 import {
   Box,
   Button,
@@ -10,7 +10,7 @@ import {
   Input,
   VStack,
 } from "@chakra-ui/react";
-import Link from "next/link";
+import { LoginFormType } from "./LoginForm.schema";
 
 type Props = {
   onSubmit: (data: LoginFormType) => void;
@@ -23,7 +23,6 @@ const LoginFormPresenter: React.FC<Props> = ({ onSubmit }) => {
     formState: { errors },
   } = useFormContext<LoginFormType>();
 
-  const handleSubmitCallback = (data: LoginFormType) => {};
   return (
     <VStack spacing="5">
       <Heading size="lg">Sky System</Heading>
