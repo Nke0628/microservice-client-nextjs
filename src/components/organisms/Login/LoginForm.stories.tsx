@@ -4,6 +4,7 @@ import LoginFormPresenter from "./LoginFormPresenter";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { LoginFormSchema, LoginFormType } from "./LoginForm.schema";
+import { action } from "@storybook/addon-actions";
 
 const meta = {
   title: "Organism/LoginForm",
@@ -15,6 +16,11 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  args: {
+    onSubmit: (data) => {
+      action("submit")(data);
+    },
+  },
   render: (args) => {
     const methods = useForm<LoginFormType>({
       defaultValues: {
@@ -25,7 +31,7 @@ export const Default: Story = {
     });
     return (
       <FormProvider {...methods}>
-        <LoginFormPresenter onSubmit={() => {}}></LoginFormPresenter>
+        <LoginFormPresenter {...args}></LoginFormPresenter>
       </FormProvider>
     );
   },
