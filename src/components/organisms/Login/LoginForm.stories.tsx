@@ -7,7 +7,7 @@ import { LoginFormSchema, LoginFormType } from "./LoginForm.schema";
 import { action } from "@storybook/addon-actions";
 
 const meta = {
-  title: "Organism/LoginForm",
+  title: "Projects/Organism/LoginForm",
   component: LoginFormPresenter,
   tags: ["autodocs"],
 } satisfies Meta<typeof LoginFormPresenter>;
