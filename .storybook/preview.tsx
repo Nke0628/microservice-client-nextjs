@@ -18,7 +18,16 @@ export const mswUrqlClientConfig = {
 
 export const mswUrqlClient = createClient(mswUrqlClientConfig);
 
-initialize();
+const options =
+  location.hostname !== "nke0628.github.io"
+    ? {}
+    : {
+        serviceWorker: {
+          url: "/microservice-client-nextjs/mockServiceWorker.js",
+        },
+      };
+
+initialize(options);
 
 const preview: Preview = {
   parameters: {

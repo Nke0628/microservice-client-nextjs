@@ -28,6 +28,11 @@ const config: StorybookConfig = {
       },
     };
   },
-  staticDirs: ["../public"],
+  staticDirs: [
+    {
+      from: "../public/mockServiceWorker.js",
+      to: "mockServiceWorker.js",
+    },
+  ],
 };
 export default config;
