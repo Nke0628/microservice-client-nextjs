@@ -1,7 +1,7 @@
 import LoginForm from "@/components/organisms/Login/LoginForm";
 import { Box, Flex } from "@chakra-ui/react";
 
-export default function Page() {
+export default function LoginPage() {
   return (
     <Flex
       flexDirection="column"

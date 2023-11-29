@@ -31,12 +31,7 @@ const LoginFormPresenter: React.FC<Props> = ({ onSubmit }) => {
           <VStack spacing="5">
             <FormControl isInvalid={!!errors.email}>
               <FormLabel htmlFor="email">アカウント</FormLabel>
-              <Input
-                id="email"
-                placeholder="アカウント"
-                {...register("email")}
-                minW="500px"
-              />
+              <Input id="email" {...register("email")} minW="500px" />
               <FormErrorMessage>
                 {errors.email && errors.email.message}
               </FormErrorMessage>
@@ -46,7 +41,6 @@ const LoginFormPresenter: React.FC<Props> = ({ onSubmit }) => {
               <Input
                 id="password"
                 type="password"
-                placeholder="パスワード"
                 {...register("password")}
                 minW="500px"
               />

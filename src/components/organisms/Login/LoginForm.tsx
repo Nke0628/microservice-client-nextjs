@@ -6,11 +6,7 @@ import Router from "next/router";
 import { LoginFormSchema, LoginFormType } from "./LoginForm.schema";
 
 const LoginForm: React.FC = () => {
-  const { updateIsAuthenticated } = useAuth();
-  const handleSubmitLogin = (data: LoginFormType) => {
-    updateIsAuthenticated(true);
-    Router.push("/sample");
-  };
+  const handleSubmitLogin = (data: LoginFormType) => {};
 
   const methods = useForm<LoginFormType>({
     defaultValues: {
