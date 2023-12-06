@@ -1,10 +1,12 @@
 import ChakuraButton from "@/components/atoms/ChakuraButton";
+import Layout from "@/components/layout";
+import { ReactElement } from "react";
 import { useQuery } from "urql";
 
 export default function Page() {
   const queryTest = `
     query login {
-      login {
+      getjwt {
         jwt
       }
     }
@@ -20,3 +22,7 @@ export default function Page() {
     </div>
   );
 }
+
+Page.getLayout = function getLayout(page: ReactElement) {
+  return <Layout>{page}</Layout>;
+};
