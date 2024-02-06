@@ -18,10 +18,12 @@
     "@hookform/resolvers": "^3.3.2",
     "framer-motion": "^10.16.4",
     "next": "13.5.6",
+    "next-query-params": "^5.0.0",
     "next-urql": "^5.0.2",
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.47.0",
+    "use-query-params": "^2.2.1",
     "zod": "^3.22.4"
   },
   "devDependencies": {
