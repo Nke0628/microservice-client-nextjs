@@ -1,5 +1,5 @@
 import ChakuraButton from "@/components/atoms/ChakuraButton";
-import Layout from "@/components/layout";
+import Layout from "@/components/Layout";
 import { ReactElement } from "react";
 import { useQuery } from "urql";
 

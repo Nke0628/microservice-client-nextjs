@@ -5,6 +5,8 @@ import React from "react";
 import { initialize, mswLoader } from "msw-storybook-addon";
 import { graphql } from "msw";
 import { createClient, cacheExchange, fetchExchange } from "urql";
+import NextAdapterPages from "next-query-params/pages";
+import { QueryParamProvider } from "use-query-params";
 
 export const mswUrqlClientConfig = {
   url: "http://localhost:6006/graphql",
@@ -55,7 +57,9 @@ const preview: Preview = {
       return (
         <Provider value={mswUrqlClient}>
           <ChakraProvider>
-            <Story />
+            <QueryParamProvider adapter={NextAdapterPages}>
+              <Story />
+            </QueryParamProvider>
           </ChakraProvider>
         </Provider>
       );
