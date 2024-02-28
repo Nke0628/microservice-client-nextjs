@@ -2,28 +2,28 @@ import ChakuraButton from "@/components/atoms/ChakuraButton";
 import Layout from "@/components/Layout";
 import { ReactElement } from "react";
 import { useQuery } from "urql";
-import { gql } from "graphql-tag";
+import { graphql } from "../../gql/gql";
 
 export default function Page() {
-  // const queryTest = gql`
-  //   query ExampleQuery($ids: [Float!]!) {
-  //     fetchUsersByIds(ids: $ids) {
-  //       id
-  //       name
-  //     }
-  //   }
-  // `;
-  // const [result] = useQuery({
-  //   query: queryTest,
-  //   variables: {
-  //     ids: [1, 2],
-  //   },
-  // });
+  const queryTest = graphql(/* GraphQL */ `
+    query ExampleQuery($ids: [Float!]!) {
+      fetchUsersByIds(ids: $ids) {
+        id
+        name
+      }
+    }
+  `);
+  const [{ data }] = useQuery({
+    query: queryTest,
+    variables: {
+      ids: [1, 2],
+    },
+  });
 
   return (
     <div>
       <ChakuraButton>chakura button</ChakuraButton>
-      {/* {result.data && alert(result.data.fetchUsersByIds[1].id)} */}
+      <p>{data?.fetchUsersByIds[1].name}</p>
     </div>
   );
 }

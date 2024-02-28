@@ -7,12 +7,13 @@ const config: CodegenConfig = {
   generates: {
     "src/gql/": {
       preset: "client",
-      plugins: ["typescript", "typescript-operations", "typescript-urql"],
+      plugins: [],
     },
     "./graphql.schema.json": {
       plugins: ["introspection"],
     },
   },
+  hooks: {},
 };
 
 export default config;
