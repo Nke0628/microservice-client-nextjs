@@ -4,6 +4,7 @@ import { ReactElement } from "react";
 import { useQuery } from "urql";
 import { graphql } from "../../gql/gql";
 import ReactSelect from "@/components/organisms/ReactSelect/ReactSelect";
+import ModalFetch from "@/components/organisms/ModalFetch/ModalFetch";
 
 export default function Page() {
   const queryTest = graphql(/* GraphQL */ `
