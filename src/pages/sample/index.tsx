@@ -3,6 +3,7 @@ import Layout from "@/components/Layout";
 import { ReactElement } from "react";
 import { useQuery } from "urql";
 import { graphql } from "../../gql/gql";
+import ReactSelect from "@/components/organisms/ReactSelect/ReactSelect";
 
 export default function Page() {
   const queryTest = graphql(/* GraphQL */ `
@@ -24,6 +25,7 @@ export default function Page() {
     <div>
       <ChakuraButton>chakura button</ChakuraButton>
       <p>{data?.fetchUsersByIds[1].name}</p>
+      <ReactSelect></ReactSelect>
     </div>
   );
 }
