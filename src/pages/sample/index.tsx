@@ -6,7 +6,7 @@ import { graphql } from "../../gql/gql";
 import ReactSelect from "@/components/organisms/ReactSelect/ReactSelect";
 import ModalFetch from "@/components/organisms/ModalFetch/ModalFetch";
 
-export default function Page() {
+function Page() {
   const queryTest = graphql(/* GraphQL */ `
     query ExampleQuery($ids: [Float!]!) {
       fetchUsersByIds(ids: $ids) {
@@ -31,6 +31,8 @@ export default function Page() {
   );
 }
 
-Page.getLayout = function getLayout(page: ReactElement) {
+Page.getLayout = (page: ReactElement) => {
   return <Layout>{page}</Layout>;
 };
+
+export default Page;
