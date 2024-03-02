@@ -61,7 +61,6 @@ const preview: Preview = {
     (Story, { component }) => {
       const getLayout =
         (component as NextPageWithLayout)?.getLayout || ((page) => page);
-      console.log(getLayout);
       return (
         <Provider value={mswUrqlClient}>
           <ChakraProvider>

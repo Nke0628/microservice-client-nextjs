@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import LoginPage from ".";
+import LoginPage from "./index.page";
 
 const meta = {
   title: "Projects/Pages/Login",
