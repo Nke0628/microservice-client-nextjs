@@ -4,7 +4,7 @@ import { ReactElement } from "react";
 import { useQuery } from "urql";
 import { graphql } from "../../gql/gql";
 import ReactSelect from "@/components/organisms/ReactSelect/ReactSelect";
-import ModalFetch from "@/components/organisms/ModalFetch/ModalFetch";
+import { CustomHook } from "@/components/organisms/CutomHook/CustomHook";
 
 function Page() {
   const queryTest = graphql(/* GraphQL */ `
@@ -27,6 +27,7 @@ function Page() {
       <ChakuraButton>chakura button</ChakuraButton>
       <p>{data?.fetchUsersByIds[1].name}</p>
       <ReactSelect></ReactSelect>
+      <CustomHook></CustomHook>
     </div>
   );
 }
