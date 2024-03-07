@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Table } from "@chakra-ui/react";
 import { SortButton } from "./SortButton";
+import { SortOrder } from "@/types/sort-order";
 
 const meta = {
   title: "Projects/Organism/ExampleTable/SortButton",
@@ -13,7 +14,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    sortOrder: 1,
+    sortOrder: SortOrder.UN_SORT,
   },
   render: (args) => {
     return (

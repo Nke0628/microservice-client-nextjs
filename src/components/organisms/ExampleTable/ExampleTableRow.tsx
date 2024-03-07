@@ -1,6 +1,4 @@
-import { Thead, Tr, Th, HStack, Box, Td } from "@chakra-ui/react";
-import { SortButton, SortOrder, nextSortMap } from "./SortButton";
-import { useState } from "react";
+import { Thead, Tr, Td } from "@chakra-ui/react";
 import { PositionLayer, PositionLayerNameMap } from "@/types/position-layer";
 
 type ExampleTableRowProps = {
