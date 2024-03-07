@@ -5,6 +5,7 @@ import { useQuery } from "urql";
 import { graphql } from "../../gql/gql";
 import ReactSelect from "@/components/organisms/ReactSelect/ReactSelect";
 import { CustomHook } from "@/components/organisms/CutomHook/CustomHook";
+import { ExampleTable } from "@/components/organisms/ExampleTable/ExampleTable";
 
 function Page() {
   const queryTest = graphql(/* GraphQL */ `
@@ -28,6 +29,7 @@ function Page() {
       <p>{data?.fetchUsersByIds[1].name}</p>
       <ReactSelect></ReactSelect>
       <CustomHook></CustomHook>
+      <ExampleTable></ExampleTable>
     </div>
   );
 }
