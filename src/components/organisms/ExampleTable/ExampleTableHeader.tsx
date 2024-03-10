@@ -2,15 +2,20 @@ import { Thead, Tr, Th, HStack, Box } from "@chakra-ui/react";
 import { SortButton } from "./SortButton";
 import { ExampleTableSortFiled } from "@/types/example-table-search-condition";
 import { useSortButton } from "@/hooks/useSortButton";
+import { SortOrder } from "@/types/sort-order";
+import { on } from "stream";
 
 type ExampleTableHeaderProps = {
-  onChangeSort: () => void;
+  onClickSortButton: (
+    sortField: ExampleTableSortFiled,
+    sortOrder: SortOrder
+  ) => void;
 };
 
 export const ExampleTableHeader: React.FC<ExampleTableHeaderProps> = ({
-  onChangeSort,
+  onClickSortButton,
 }) => {
-  const { getSortOrderBySortField, handleOnClickSortButton } =
+  const { getSortOrderBySortField, handleClickSortButton } =
     useSortButton<ExampleTableSortFiled>();
   return (
     <Thead>
@@ -24,7 +29,10 @@ export const ExampleTableHeader: React.FC<ExampleTableHeaderProps> = ({
                 ExampleTableSortFiled.POSITION_LAYER
               )}
               onClickSortButton={() => {
-                handleOnClickSortButton(ExampleTableSortFiled.POSITION_LAYER);
+                handleClickSortButton(
+                  ExampleTableSortFiled.POSITION_LAYER,
+                  onClickSortButton
+                );
               }}
             ></SortButton>
           </HStack>
@@ -39,7 +47,10 @@ export const ExampleTableHeader: React.FC<ExampleTableHeaderProps> = ({
                 ExampleTableSortFiled.CHAR_NUM
               )}
               onClickSortButton={() => {
-                handleOnClickSortButton(ExampleTableSortFiled.CHAR_NUM);
+                handleClickSortButton(
+                  ExampleTableSortFiled.CHAR_NUM,
+                  onClickSortButton
+                );
               }}
             ></SortButton>
           </HStack>

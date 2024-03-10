@@ -31,17 +31,17 @@ export const useSortButton = <T>() => {
   };
 
   // ソートボタンクリック
-  const handleOnClickSortButton = (
+  const handleClickSortButton = (
     sortField: T,
-    callback: () => void = () => {}
+    callback: (sortField: T, sortOrder: SortOrder) => void = () => {}
   ) => {
     setCurrentSortOrder(getNextSortOrder(sortField));
     setCurrentSortField(sortField);
-    callback();
+    callback(sortField, getNextSortOrder(sortField));
   };
 
   return {
     getSortOrderBySortField,
-    handleOnClickSortButton,
+    handleClickSortButton,
   };
 };

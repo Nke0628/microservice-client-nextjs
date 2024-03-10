@@ -12,7 +12,13 @@ export const ExampleTable: React.FC = (props) => {
   const [sortField, setSortField] = useState<ExampleTableSortFiled>(
     ExampleTableSortFiled.CHAR_NUM
   );
-  const handleChangeSort = () => {};
+  const handleClickSortButton = (
+    sortField: ExampleTableSortFiled,
+    sortOrder: SortOrder
+  ) => {
+    setSortField(sortField);
+    setSortOrder(sortOrder);
+  };
   const mockData = Array.from({ length: 20 }, (_, i) => ({
     id: i + 1,
     positionLayer: PositionLayer.CHIEF,
@@ -22,7 +28,9 @@ export const ExampleTable: React.FC = (props) => {
   }));
   return (
     <Table>
-      <ExampleTableHeader onChangeSort={handleChangeSort}></ExampleTableHeader>
+      <ExampleTableHeader
+        onClickSortButton={handleClickSortButton}
+      ></ExampleTableHeader>
       {mockData.map((data) => (
         <ExampleTableRow key={data.id} {...data}></ExampleTableRow>
       ))}
