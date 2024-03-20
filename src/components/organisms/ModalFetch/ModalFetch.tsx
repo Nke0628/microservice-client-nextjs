@@ -16,7 +16,7 @@ const ModalFetch: React.FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const queryTest = graphql(/* GraphQL */ `
-    query ExampleQuery($ids: [Float!]!) {
+    query ModalFetchQuery($ids: [Float!]!) {
       fetchUsersByIds(ids: $ids) {
         id
         name
