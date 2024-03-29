@@ -10,6 +10,7 @@ import NextAdapterPages from "next-query-params/pages";
 import { QueryParamProvider } from "use-query-params";
 import { ErrorBoundary } from "react-error-boundary";
 import ErrorFallback from "@/components/error/ErrorFallback";
+import { LoginUserProvider } from "@/store/LoginUserProvider";
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -27,15 +28,17 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         <Suspense fallback={<p>...loading</p>}>
           <Provider value={urqlClient}>
-            <ChakraProvider>
-              <AuthProvider>
-                <AuthRoute>
-                  <QueryParamProvider adapter={NextAdapterPages}>
-                    {getLayout(<Component {...pageProps} />)}
-                  </QueryParamProvider>
-                </AuthRoute>
-              </AuthProvider>
-            </ChakraProvider>
+            <LoginUserProvider>
+              <ChakraProvider>
+                <AuthProvider>
+                  <AuthRoute>
+                    <QueryParamProvider adapter={NextAdapterPages}>
+                      {getLayout(<Component {...pageProps} />)}
+                    </QueryParamProvider>
+                  </AuthRoute>
+                </AuthProvider>
+              </ChakraProvider>
+            </LoginUserProvider>
           </Provider>
         </Suspense>
       </ErrorBoundary>
