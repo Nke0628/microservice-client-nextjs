@@ -1,4 +1,6 @@
+import { graphql } from "@/gql/gql";
 import { createContext, FC, ReactNode, useContext } from "react";
+import { useQuery } from "urql";
 
 export type LoginUser = {
   id: number;
@@ -14,10 +16,30 @@ type LoginUserProviderProps = {
   children: ReactNode;
 };
 
+const LOGIN_USER_QUERY_DOCUMENT = graphql(/* GraphQL */ `
+  query loginUserQuery($ids: [Float!]!) {
+    fetchUsersByIds(ids: $ids) {
+      id
+      name
+    }
+  }
+`);
+
 export const LoginUserProvider: FC<LoginUserProviderProps> = ({ children }) => {
+  const [{ data, error }] = useQuery({
+    query: LOGIN_USER_QUERY_DOCUMENT,
+    variables: {
+      ids: [1],
+    },
+  });
+
+  if (error) {
+    throw new Error("ログインユーザの情報を取得できませんでした");
+  }
+
   const loginUser: LoginUser = {
-    id: 1,
-    name: "青空太郎",
+    id: Number(data?.fetchUsersByIds[0].id) ?? 0,
+    name: data?.fetchUsersByIds[0].name ?? "",
   };
   return (
     <LoginUserContext.Provider value={loginUser}>
