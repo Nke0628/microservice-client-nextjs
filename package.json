@@ -24,6 +24,7 @@
     "@graphql-codegen/typescript-operations": "^4.2.0",
     "@graphql-codegen/typescript-urql": "^4.0.0",
     "@hookform/resolvers": "^3.3.2",
+    "@react-pdf/renderer": "^3.4.0",
     "framer-motion": "^10.16.4",
     "graphql": "^16.8.1",
     "graphql-tag": "^2.12.6",
