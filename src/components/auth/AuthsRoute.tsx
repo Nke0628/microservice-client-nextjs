@@ -1,4 +1,3 @@
-import { useAuth } from "@/hooks/auth";
 import Router from "next/router";
 import { ReactNode, useEffect } from "react";
 
@@ -7,8 +6,7 @@ type Props = {
 };
 
 const AuthRoute: React.FC<Props> = ({ children }) => {
-  const { isAuthenticated } = useAuth();
-
+  const isAuthenticated = true;
   // privatePageに認証時以外にアクセスした場合はログイン画面に遷移させる
   useEffect(() => {
     if (!isAuthenticated) {

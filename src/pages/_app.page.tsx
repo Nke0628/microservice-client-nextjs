@@ -1,4 +1,3 @@
-import { AuthProvider } from "@/hooks/auth";
 import { ChakraProvider } from "@chakra-ui/react";
 import type { AppProps } from "next/app";
 import { Provider } from "urql";
@@ -30,13 +29,9 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
           <Provider value={urqlClient}>
             <LoginUserProvider>
               <ChakraProvider>
-                <AuthProvider>
-                  <AuthRoute>
-                    <QueryParamProvider adapter={NextAdapterPages}>
-                      {getLayout(<Component {...pageProps} />)}
-                    </QueryParamProvider>
-                  </AuthRoute>
-                </AuthProvider>
+                <QueryParamProvider adapter={NextAdapterPages}>
+                  {getLayout(<Component {...pageProps} />)}
+                </QueryParamProvider>
               </ChakraProvider>
             </LoginUserProvider>
           </Provider>
