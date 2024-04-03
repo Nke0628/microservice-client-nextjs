@@ -6,14 +6,15 @@ import ReactSelect from "@/components/organisms/ReactSelect/ReactSelect";
 import { CustomHook } from "@/components/organisms/CutomHook/CustomHook";
 import { ExampleTableArea } from "@/components/organisms/ExampleTable/ExampleTableArea";
 import { Fragment } from "@/components/organisms/Fragment/Fragment";
-import { ReactElement } from "react";
+import { ReactElement, useState } from "react";
 import { useLoginUser } from "@/store/LoginUserProvider";
 
 // サンプルデータドキュメント
 const EXAMPLE_QUERY_DOCUMENT = graphql(/* GraphQL */ `
-  query ExampleQuery($ids: [Float!]!) {
-    fetchUsersByIds(ids: $ids) {
+  query ExampleQuery($ids: [Float!]!, $userType: [UserType!]!) {
+    fetchUsersByIds(ids: $ids, userType: $userType) {
       id
+      userType
       ...UserItem
     }
   }
@@ -29,6 +30,7 @@ function Page() {
     query: EXAMPLE_QUERY_DOCUMENT,
     variables: {
       ids: [1, 2],
+      userType: [],
     },
   });
 

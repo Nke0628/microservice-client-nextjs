@@ -14,9 +14,9 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  */
 const documents = {
     "\n  fragment UserItem on User {\n    name\n  }\n": types.UserItemFragmentDoc,
-    "\n    query ModalFetchQuery($ids: [Float!]!) {\n      fetchUsersByIds(ids: $ids) {\n        id\n        name\n      }\n    }\n  ": types.ModalFetchQueryDocument,
-    "\n  query ExampleQuery($ids: [Float!]!) {\n    fetchUsersByIds(ids: $ids) {\n      id\n      ...UserItem\n    }\n  }\n": types.ExampleQueryDocument,
-    "\n  query loginUserQuery($ids: [Float!]!) {\n    fetchUsersByIds(ids: $ids) {\n      id\n      name\n    }\n  }\n": types.LoginUserQueryDocument,
+    "\n    query ModalFetchQuery($ids: [Float!]!, $userType: [UserType!]!) {\n      fetchUsersByIds(ids: $ids, userType: $userType) {\n        id\n        name\n      }\n    }\n  ": types.ModalFetchQueryDocument,
+    "\n  query ExampleQuery($ids: [Float!]!, $userType: [UserType!]!) {\n    fetchUsersByIds(ids: $ids, userType: $userType) {\n      id\n      userType\n      ...UserItem\n    }\n  }\n": types.ExampleQueryDocument,
+    "\n  query LoginUserQuery($ids: [Float!]!, $userType: [UserType!]!) {\n    fetchUsersByIds(ids: $ids, userType: $userType) {\n      id\n      name\n    }\n  }\n": types.LoginUserQueryDocument,
 };
 
 /**
@@ -40,15 +40,15 @@ export function graphql(source: "\n  fragment UserItem on User {\n    name\n  }\
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n    query ModalFetchQuery($ids: [Float!]!) {\n      fetchUsersByIds(ids: $ids) {\n        id\n        name\n      }\n    }\n  "): (typeof documents)["\n    query ModalFetchQuery($ids: [Float!]!) {\n      fetchUsersByIds(ids: $ids) {\n        id\n        name\n      }\n    }\n  "];
+export function graphql(source: "\n    query ModalFetchQuery($ids: [Float!]!, $userType: [UserType!]!) {\n      fetchUsersByIds(ids: $ids, userType: $userType) {\n        id\n        name\n      }\n    }\n  "): (typeof documents)["\n    query ModalFetchQuery($ids: [Float!]!, $userType: [UserType!]!) {\n      fetchUsersByIds(ids: $ids, userType: $userType) {\n        id\n        name\n      }\n    }\n  "];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  query ExampleQuery($ids: [Float!]!) {\n    fetchUsersByIds(ids: $ids) {\n      id\n      ...UserItem\n    }\n  }\n"): (typeof documents)["\n  query ExampleQuery($ids: [Float!]!) {\n    fetchUsersByIds(ids: $ids) {\n      id\n      ...UserItem\n    }\n  }\n"];
+export function graphql(source: "\n  query ExampleQuery($ids: [Float!]!, $userType: [UserType!]!) {\n    fetchUsersByIds(ids: $ids, userType: $userType) {\n      id\n      userType\n      ...UserItem\n    }\n  }\n"): (typeof documents)["\n  query ExampleQuery($ids: [Float!]!, $userType: [UserType!]!) {\n    fetchUsersByIds(ids: $ids, userType: $userType) {\n      id\n      userType\n      ...UserItem\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  query loginUserQuery($ids: [Float!]!) {\n    fetchUsersByIds(ids: $ids) {\n      id\n      name\n    }\n  }\n"): (typeof documents)["\n  query loginUserQuery($ids: [Float!]!) {\n    fetchUsersByIds(ids: $ids) {\n      id\n      name\n    }\n  }\n"];
+export function graphql(source: "\n  query LoginUserQuery($ids: [Float!]!, $userType: [UserType!]!) {\n    fetchUsersByIds(ids: $ids, userType: $userType) {\n      id\n      name\n    }\n  }\n"): (typeof documents)["\n  query LoginUserQuery($ids: [Float!]!, $userType: [UserType!]!) {\n    fetchUsersByIds(ids: $ids, userType: $userType) {\n      id\n      name\n    }\n  }\n"];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};

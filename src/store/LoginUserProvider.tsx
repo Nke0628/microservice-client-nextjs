@@ -17,8 +17,8 @@ type LoginUserProviderProps = {
 };
 
 const LOGIN_USER_QUERY_DOCUMENT = graphql(/* GraphQL */ `
-  query loginUserQuery($ids: [Float!]!) {
-    fetchUsersByIds(ids: $ids) {
+  query LoginUserQuery($ids: [Float!]!, $userType: [UserType!]!) {
+    fetchUsersByIds(ids: $ids, userType: $userType) {
       id
       name
     }
@@ -30,6 +30,7 @@ export const LoginUserProvider: FC<LoginUserProviderProps> = ({ children }) => {
     query: LOGIN_USER_QUERY_DOCUMENT,
     variables: {
       ids: [1],
+      userType: [],
     },
   });
 
