@@ -6,6 +6,15 @@ const nextConfig = {
   },
   pageExtensions: ["page.tsx", "page.ts", "page.jsx", "page.js"],
   output: "standalone",
+  async redirects() {
+    return [
+      {
+        source: "/",
+        destination: "/sample",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;
