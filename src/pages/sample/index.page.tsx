@@ -8,6 +8,7 @@ import { ExampleTableArea } from "@/components/organisms/ExampleTable/ExampleTab
 import { Fragment } from "@/components/organisms/Fragment/Fragment";
 import { ReactElement, useState } from "react";
 import { useLoginUser } from "@/store/LoginUserProvider";
+import { Chakra } from "@/components/organisms/Chakra/Chakra";
 
 // サンプルデータドキュメント
 const EXAMPLE_QUERY_DOCUMENT = graphql(/* GraphQL */ `
@@ -61,6 +62,9 @@ function Page() {
         {loginUser.id}
         {loginUser.name}
       </div>
+
+      {/* ChakraUIの例 */}
+      <Chakra></Chakra>
     </div>
   );
 }
