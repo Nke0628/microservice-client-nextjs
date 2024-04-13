@@ -1,8 +1,8 @@
 import { SortOrder } from "./sort-order";
 
 export const ExampleTableSortFiled = {
-  POSITION_LAYER: 1,
-  CHAR_NUM: 2,
+  POSITION_LAYER: "position_layer",
+  CHAR_NUM: "char_num",
 } as const;
 
 export type ExampleTableSortFiled =

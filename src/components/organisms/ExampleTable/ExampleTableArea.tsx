@@ -3,7 +3,6 @@ import { ExampleTable } from "./ExampleTable";
 import { ExampleTableSearchCondition } from "./ExampleTableSearchCondition";
 
 export const ExampleTableArea: React.FC = (props) => {
-  // TODO ExampleTableに検索条件として流す
   const [keyword, setKeyword] = useState<string>("");
   return (
     <>
@@ -12,7 +11,7 @@ export const ExampleTableArea: React.FC = (props) => {
           setKeyword(value);
         }}
       ></ExampleTableSearchCondition>
-      <ExampleTable></ExampleTable>
+      <ExampleTable keyword={keyword}></ExampleTable>
     </>
   );
 };

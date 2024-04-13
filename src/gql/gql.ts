@@ -13,6 +13,7 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Therefore it is highly recommended to use the babel or swc plugin for production.
  */
 const documents = {
+    "\n    query FetchUserBySearchCondition(\n      $keyword: String!\n      $limit: Float!\n      $offset: Float!\n      $sortField: String!\n      $sortOrder: Float!\n    ) {\n      fetchUsersBySearchCondition(\n        keyword: $keyword\n        limit: $limit\n        offset: $offset\n        sortField: $sortField\n        sortOrder: $sortOrder\n      ) {\n        id\n        name\n        department {\n          id\n        }\n      }\n    }\n  ": types.FetchUserBySearchConditionDocument,
     "\n  fragment UserItem on User {\n    name\n    department {\n      id\n    }\n  }\n": types.UserItemFragmentDoc,
     "\n    query ModalFetchQuery($ids: [Float!]!, $userType: [UserType!]!) {\n      fetchUsersByIds(ids: $ids, userType: $userType) {\n        id\n        name\n      }\n    }\n  ": types.ModalFetchQueryDocument,
     "\n  query pdfQuery($ids: [Float!]!, $userType: [UserType!]!) {\n    fetchUsersByIds(ids: $ids, userType: $userType) {\n      id\n      userType\n      ...UserItem\n    }\n  }\n": types.PdfQueryDocument,
@@ -34,6 +35,10 @@ const documents = {
  */
 export function graphql(source: string): unknown;
 
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n    query FetchUserBySearchCondition(\n      $keyword: String!\n      $limit: Float!\n      $offset: Float!\n      $sortField: String!\n      $sortOrder: Float!\n    ) {\n      fetchUsersBySearchCondition(\n        keyword: $keyword\n        limit: $limit\n        offset: $offset\n        sortField: $sortField\n        sortOrder: $sortOrder\n      ) {\n        id\n        name\n        department {\n          id\n        }\n      }\n    }\n  "): (typeof documents)["\n    query FetchUserBySearchCondition(\n      $keyword: String!\n      $limit: Float!\n      $offset: Float!\n      $sortField: String!\n      $sortOrder: Float!\n    ) {\n      fetchUsersBySearchCondition(\n        keyword: $keyword\n        limit: $limit\n        offset: $offset\n        sortField: $sortField\n        sortOrder: $sortOrder\n      ) {\n        id\n        name\n        department {\n          id\n        }\n      }\n    }\n  "];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

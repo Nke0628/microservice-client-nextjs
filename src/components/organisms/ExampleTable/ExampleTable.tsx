@@ -1,13 +1,18 @@
-import { Table } from "@chakra-ui/react";
+import { Flex, Spinner, Table, Td, Thead, Tr } from "@chakra-ui/react";
 import { ExampleTableHeader } from "./ExampleTableHeader";
 import { ExampleTableRow } from "./ExampleTableRow";
 import { PositionLayer } from "@/types/position-layer";
 import { SortOrder } from "@/types/sort-order";
 import { useState } from "react";
 import { ExampleTableSortFiled } from "@/types/example-table-search-condition";
+import { graphql } from "../../../gql/gql";
+import { useQuery } from "urql";
 
-export const ExampleTable: React.FC = (props) => {
-  // TODO データFetch
+type ExampleTableProps = {
+  keyword: string;
+};
+
+export const ExampleTable: React.FC<ExampleTableProps> = ({ keyword }) => {
   const [sortOrder, setSortOrder] = useState<SortOrder>(SortOrder.UN_SORT);
   const [sortField, setSortField] = useState<ExampleTableSortFiled>(
     ExampleTableSortFiled.CHAR_NUM
@@ -26,14 +31,62 @@ export const ExampleTable: React.FC = (props) => {
     theme: "テーマ",
     charNum: 200,
   }));
+
+  // 検索クエリ
+  const queryTest = graphql(/* GraphQL */ `
+    query FetchUserBySearchCondition(
+      $keyword: String!
+      $limit: Float!
+      $offset: Float!
+      $sortField: String!
+      $sortOrder: Float!
+    ) {
+      fetchUsersBySearchCondition(
+        keyword: $keyword
+        limit: $limit
+        offset: $offset
+        sortField: $sortField
+        sortOrder: $sortOrder
+      ) {
+        id
+        name
+        department {
+          id
+        }
+      }
+    }
+  `);
+  const [{ data, fetching }] = useQuery({
+    query: queryTest,
+    variables: {
+      keyword,
+      limit: 1,
+      offset: 1,
+      sortField,
+      sortOrder,
+    },
+  });
+
   return (
     <Table>
       <ExampleTableHeader
         onClickSortButton={handleClickSortButton}
       ></ExampleTableHeader>
-      {mockData.map((data) => (
-        <ExampleTableRow key={data.id} {...data}></ExampleTableRow>
-      ))}
+      {fetching ? (
+        <Thead>
+          <Tr>
+            <Td colSpan={5}>
+              <Flex justifyContent="center" alignItems="center" minH="200px">
+                <Spinner />
+              </Flex>
+            </Td>
+          </Tr>
+        </Thead>
+      ) : (
+        mockData.map((data) => (
+          <ExampleTableRow key={data.id} {...data}></ExampleTableRow>
+        ))
+      )}
     </Table>
   );
 };
