@@ -11,7 +11,7 @@ export default function PDF({ id }: pdfProps) {
   return (
     <Document title="出生児育児休業申請">
       {/* ページ設定 */}
-      <Page style={[baseStyle.container]} size="A4">
+      <Page style={[baseStyle.fontFamily, baseStyle.container]} size="A4">
         {/* ボディ */}
         <View style={baseStyle.body}>
           {/* タイトルエリア */}
@@ -74,19 +74,19 @@ export default function PDF({ id }: pdfProps) {
               <Text style={[baseStyle.tableColWidth20, baseStyle.fontBold]}>
                 名前(正式名)
               </Text>
-              <Text style={baseStyle.tableColWidth80}>青空太郎</Text>
+              <Text style={baseStyle.tableColGrow}>青空太郎</Text>
             </View>
             <View style={baseStyle.tableRow}>
               <Text style={[baseStyle.tableColWidth20, baseStyle.fontBold]}>
                 メールアドレス
               </Text>
-              <Text style={baseStyle.tableColWidth80}>青空太郎</Text>
+              <Text style={baseStyle.tableColGrow}>青空太郎</Text>
             </View>
             <View style={baseStyle.tableRow}>
               <Text style={[baseStyle.tableColWidth20, baseStyle.fontBold]}>
                 電話番号
               </Text>
-              <Text style={baseStyle.tableColWidth80}>青空太郎</Text>
+              <Text style={baseStyle.tableColGrow}>青空太郎</Text>
             </View>
           </View>
 
@@ -96,19 +96,19 @@ export default function PDF({ id }: pdfProps) {
               <Text style={[baseStyle.tableColWidth20, baseStyle.fontBold]}>
                 滞在期間
               </Text>
-              <Text style={baseStyle.tableColWidth80}>青空太郎</Text>
+              <Text style={baseStyle.tableColGrow}>青空太郎</Text>
             </View>
             <View style={baseStyle.tableRow}>
               <Text style={[baseStyle.tableColWidth20, baseStyle.fontBold]}>
                 都道府県
               </Text>
-              <Text style={baseStyle.tableColWidth80}>青空太郎</Text>
+              <Text style={baseStyle.tableColGrow}>青空太郎</Text>
             </View>
             <View style={baseStyle.tableRow}>
               <Text style={[baseStyle.tableColWidth20, baseStyle.fontBold]}>
                 住所
               </Text>
-              <Text style={baseStyle.tableColWidth80}>青空太郎</Text>
+              <Text style={baseStyle.tableColGrow}>青空太郎</Text>
             </View>
           </View>
 
@@ -118,13 +118,13 @@ export default function PDF({ id }: pdfProps) {
               <Text style={[baseStyle.tableColWidth20, baseStyle.fontBold]}>
                 分割か
               </Text>
-              <Text style={baseStyle.tableColWidth80}>はい</Text>
+              <Text style={baseStyle.tableColGrow}>はい</Text>
             </View>
             <View style={baseStyle.tableRow}>
               <Text style={[baseStyle.tableColWidth20, baseStyle.fontBold]}>
                 休業日程１
               </Text>
-              <Text style={baseStyle.tableColWidth80}>
+              <Text style={baseStyle.tableColGrow}>
                 2024年1月1日~2024年1月10日
               </Text>
             </View>
@@ -132,7 +132,7 @@ export default function PDF({ id }: pdfProps) {
               <Text style={[baseStyle.tableColWidth20, baseStyle.fontBold]}>
                 休業日程2
               </Text>
-              <Text style={baseStyle.tableColWidth80}>
+              <Text style={baseStyle.tableColGrow}>
                 2024年1月1日~2024年1月10日
               </Text>
             </View>
@@ -144,13 +144,13 @@ export default function PDF({ id }: pdfProps) {
               <Text style={[baseStyle.tableColWidth20, baseStyle.fontBold]}>
                 最終出勤日1
               </Text>
-              <Text style={baseStyle.tableColWidth80}>2024年1月1日</Text>
+              <Text style={baseStyle.tableColGrow}>2024年1月1日</Text>
             </View>
             <View style={baseStyle.tableRow}>
               <Text style={[baseStyle.tableColWidth20, baseStyle.fontBold]}>
                 最終出勤日2
               </Text>
-              <Text style={baseStyle.tableColWidth80}>2024年1月1日</Text>
+              <Text style={baseStyle.tableColGrow}>2024年1月1日</Text>
             </View>
           </View>
         </View>

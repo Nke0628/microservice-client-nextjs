@@ -1,5 +1,6 @@
 import { Font, StyleSheet } from "@react-pdf/renderer";
 
+// フォント登録
 Font.register({
   family: "NotoSansJP",
   fonts: [
@@ -13,48 +14,56 @@ Font.register({
   ],
 });
 
+// ベーススタイルの定義
 export const baseStyle = StyleSheet.create({
-  // font-family
+  // フォント
   fontFamily: {
     fontFamily: "NotoSansJP",
   },
 
-  // layout
+  // 基本レイアウト
   container: {
-    flexDirection: "column",
     padding: 30,
-    fontFamily: "NotoSansJP",
-    fontSize: 11,
+    fontSize: 10,
   },
   body: {
-    flex: 1,
+    flex: 1, // フッター部(押印部)との間に空白がある場合は余白を伸ばすための設定
   },
-  footer: {
-    // NOTE 現時点では指定が必要ないが、実装上可読性が高まるので定義だけしておく
-  },
+  footer: {}, // 現時点では指定が必要ないが、実装上可読性が高まるので定義だけしておく
 
-  // font-size
+  // タイポグラフィ
   textSmall: {
-    fontSize: 11,
+    fontSize: 10,
   },
   textMedium: {
-    fontSize: 15,
+    fontSize: 12,
   },
   textLarge: {
     fontSize: 20,
   },
-
-  // font-weight
   fontBold: {
     fontWeight: "bold",
   },
 
-  // padding
-  pdMedium: {
+  // margin & padding
+  pSmall: {
+    padding: 10,
+  },
+  pMedium: {
     padding: 30,
   },
-
-  // margin-bottom
+  pLarge: {
+    padding: 50,
+  },
+  mSmall: {
+    margin: 10,
+  },
+  mMedium: {
+    margin: 30,
+  },
+  mLarge: {
+    margin: 50,
+  },
   mbSmall: {
     marginBottom: 10,
   },
@@ -65,22 +74,18 @@ export const baseStyle = StyleSheet.create({
     marginBottom: 50,
   },
 
-  // flex-Direction
+  // Flex
   flexRow: {
     flexDirection: "row",
   },
-
-  // justify-content
   justifyBetween: {
     justifyContent: "space-between",
   },
-
-  // align-items
   itemCenter: {
     alignItems: "center",
   },
 
-  // table
+  // Table
   table: {
     display: "flex",
     borderStyle: "solid",
@@ -108,20 +113,11 @@ export const baseStyle = StyleSheet.create({
     borderTopWidth: 0,
     padding: 8,
   },
-  // 固定幅カラム(20)
+  // 固定幅カラム(20%)
   tableColWidth20: {
     width: "20%",
     borderStyle: "solid",
     borderWidth: 1,
-    borderLeftWidth: 0,
-    borderTopWidth: 0,
-    padding: 8,
-  },
-  // 固定幅カラム(80)
-  tableColWidth80: {
-    width: "80%",
-    borderWidth: 1,
-    borderStyle: "solid",
     borderLeftWidth: 0,
     borderTopWidth: 0,
     padding: 8,
