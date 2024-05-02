@@ -1,20 +1,22 @@
-import { FormProvider, useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { FormProvider } from "react-hook-form";
 import LoginFormPresenter from "./LoginFormPresenter";
-import { useAuth } from "@/hooks/auth";
-import Router from "next/router";
 import { LoginFormSchema, LoginFormType } from "./LoginForm.schema";
+import { useZodForm } from "@/libs/rfh";
 
 const LoginForm: React.FC = () => {
-  const handleSubmitLogin = (data: LoginFormType) => {};
+  const handleSubmitLogin = (data: LoginFormType) => {
+    console.log(data);
+  };
 
-  const methods = useForm<LoginFormType>({
-    defaultValues: {
-      email: "",
-      password: "",
+  const methods = useZodForm<LoginFormType>(
+    {
+      defaultValues: {
+        email: "",
+        password: "",
+      },
     },
-    resolver: zodResolver(LoginFormSchema),
-  });
+    LoginFormSchema
+  );
   return (
     <FormProvider {...methods}>
       <LoginFormPresenter onSubmit={handleSubmitLogin}></LoginFormPresenter>
