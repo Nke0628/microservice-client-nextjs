@@ -9,6 +9,7 @@ import { Fragment } from "@/components/organisms/Fragment/Fragment";
 import { ReactElement, useState } from "react";
 import { useLoginUser } from "@/store/LoginUserProvider";
 import { Chakra } from "@/components/organisms/Chakra/Chakra";
+import dayjs from "@/utils/dayjs";
 
 // サンプルデータドキュメント
 const EXAMPLE_QUERY_DOCUMENT = graphql(/* GraphQL */ `
@@ -65,6 +66,11 @@ function Page() {
 
       {/* ChakraUIの例 */}
       <Chakra></Chakra>
+
+      {/* Day.jsの例 */}
+      <p>{dayjs("2024-05-05").toString()}</p>
+      <p>{dayjs("2024-05-05").toISOString()}</p>
+      <p>{dayjs("2024-05-05").format("YYYY-MM-DD")}</p>
     </div>
   );
 }
