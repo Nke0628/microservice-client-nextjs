@@ -10,6 +10,7 @@ import { ReactElement, useState } from "react";
 import { useLoginUser } from "@/store/LoginUserProvider";
 import { Chakra } from "@/components/organisms/Chakra/Chakra";
 import dayjs from "@/utils/dayjs";
+import WithSample from "@/components/organisms/WithSample/WithSample";
 
 // サンプルデータドキュメント
 const EXAMPLE_QUERY_DOCUMENT = graphql(/* GraphQL */ `
@@ -75,8 +76,10 @@ function Page() {
   );
 }
 
-Page.getLayout = (page: ReactElement) => {
+const CompWithContext = WithSample(Page);
+
+CompWithContext.getLayout = (page: ReactElement) => {
   return <Layout>{page}</Layout>;
 };
 
-export default Page;
+export default CompWithContext;
