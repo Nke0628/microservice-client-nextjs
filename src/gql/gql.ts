@@ -18,6 +18,7 @@ const documents = {
     "\n    query ModalFetchQuery($ids: [Float!]!, $userType: [UserType!]!) {\n      fetchUsersByIds(ids: $ids, userType: $userType) {\n        id\n        name\n      }\n    }\n  ": types.ModalFetchQueryDocument,
     "\n  query pdfQuery($ids: [Float!]!, $userType: [UserType!]!) {\n    fetchUsersByIds(ids: $ids, userType: $userType) {\n      id\n      userType\n      ...UserItem\n    }\n  }\n": types.PdfQueryDocument,
     "\n  query ExampleQuery($ids: [Float!]!, $userType: [UserType!]!) {\n    fetchUsersByIds(ids: $ids, userType: $userType) {\n      id\n      userType\n      ...UserItem\n    }\n  }\n": types.ExampleQueryDocument,
+    "\n  query CsvExportQuery {\n    csvExport {\n      csv\n    }\n  }\n": types.CsvExportQueryDocument,
     "\n  query LoginUserQuery($ids: [Float!]!, $userType: [UserType!]!) {\n    fetchUsersByIds(ids: $ids, userType: $userType) {\n      id\n      name\n    }\n  }\n": types.LoginUserQueryDocument,
 };
 
@@ -55,6 +56,10 @@ export function graphql(source: "\n  query pdfQuery($ids: [Float!]!, $userType: 
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(source: "\n  query ExampleQuery($ids: [Float!]!, $userType: [UserType!]!) {\n    fetchUsersByIds(ids: $ids, userType: $userType) {\n      id\n      userType\n      ...UserItem\n    }\n  }\n"): (typeof documents)["\n  query ExampleQuery($ids: [Float!]!, $userType: [UserType!]!) {\n    fetchUsersByIds(ids: $ids, userType: $userType) {\n      id\n      userType\n      ...UserItem\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  query CsvExportQuery {\n    csvExport {\n      csv\n    }\n  }\n"): (typeof documents)["\n  query CsvExportQuery {\n    csvExport {\n      csv\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
